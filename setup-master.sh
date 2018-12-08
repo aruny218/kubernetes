@@ -72,7 +72,7 @@ systemctl restart kubelet &>>$LOG
 Stat $? "Retarting Kubelet Service"
 
 sysctl net.bridge.bridge-nf-call-iptables=1 &>/dev/null
-kubeadm init --pod-network-cidr=10.244.0.0/16 &>$LOG
+kubeadm init --pod-network-cidr=10.142.0.0/16 &>$LOG
 STAT=$?
 Stat $? "Initializing Kubernetes Cluster"
 
