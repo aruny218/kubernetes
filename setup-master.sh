@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Kubernetes Master Setup
 
 LOG=/tmp/kube-master.log 
