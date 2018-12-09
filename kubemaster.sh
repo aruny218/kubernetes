@@ -79,6 +79,7 @@ sysctl net.bridge.bridge-nf-call-iptables=1 &>/dev/null
 # echo net.ipv4.ip_forward = 1 > /etc/sysctl.conf
 # systemctl restart network &>/dev/null
 kubeadm init --pod-network-cidr=10.142.0.0/16 --ignore-preflight-errors=NumCPU &>$LOG
+cat $LOG | /bin/grep join
 STAT=$?
 Stat $? "Initializing Kubernetes Cluster"
 
