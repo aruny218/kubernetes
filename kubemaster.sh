@@ -28,7 +28,7 @@ if [ $? -eq 0 ]; then
 success "Installed Docker-CE Successfully"
 else
 error "Installing Docker-CE Failure"
-exit 1
+
 fi
 
 ## Starting Docker Service
