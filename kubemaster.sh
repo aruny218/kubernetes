@@ -63,6 +63,10 @@ systemctl enable kubelet  &>/dev/null
 
 echo 'net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1' > /etc/sysctl.d/k8s.conf
+echo '[Ip_Forward]
+net.ipv4.ip_forward = 1' > /etc/sysctl.conf
+
+systemctl restart network
 sysctl --system &>> $LOG
 Stat $? "Updating Network Configuration"
 
