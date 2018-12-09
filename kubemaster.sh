@@ -23,13 +23,14 @@ DockerCERepo
 
 ## Installing Docker
 yum install bind-utils http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.74-1.el7.noarch.rpm -y &>/dev/null
-yum install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.03.3.ce-1.el7.x86_64.rpm -y &>/dev/null
-# if [ $? -eq 0 ]; then
-# success "Installed Docker-CE Successfully"
-# else
-# error "Installing Docker-CE Failure"
-# exit 1
-# fi
+yum install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm -y &>/dev/null
+
+if [ $? -eq 0 ]; then
+success "Installed Docker-CE Successfully"
+else
+error "Installing Docker-CE Failure"
+exit 1
+fi
 
 ## Starting Docker Service
 systemctl enable docker &>/dev/null
