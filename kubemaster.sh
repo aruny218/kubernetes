@@ -72,8 +72,8 @@ systemctl restart kubelet &>>$LOG
 Stat $? "Retarting Kubelet Service"
 
 sysctl net.bridge.bridge-nf-call-iptables=1 &>/dev/null
-echo net.ipv4.ip_forward = 1 > /etc/sysctl.conf &>/dev/null
-systemctl restart network &>/dev/null
+# echo net.ipv4.ip_forward = 1 > /etc/sysctl.conf
+# systemctl restart network &>/dev/null
 kubeadm init --pod-network-cidr=10.142.0.0/16 --ignore-preflight-errors=NumCPU &>$LOG
 STAT=$?
 Stat $? "Initializing Kubernetes Cluster"
