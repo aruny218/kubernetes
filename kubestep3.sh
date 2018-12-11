@@ -14,7 +14,8 @@ source /tmp/common-functions.sh
 sleep 30
 i=120
 while true ; do
-kubectl get pods  --all-namespaces | grep kube-system | awk '{print $4}' | grep -v Running &>/dev/null
+kubectl get pods  --all-namespaces | grep kube-system | awk '{print $4}' | grep -v Running &>>$LOG
+#kubectl get pods
 if [ $? -ne 0 ]; then
 Stat 0 "Network Configuration Completed"
 break
