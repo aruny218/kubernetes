@@ -2,6 +2,9 @@
 
 #Kubernetes Cluster Initialization
 
+LOG=/tmp/kubeclusterini.log
+rm -f $LOG
+
 kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=NumCPU &>$LOG
 cat $LOG | /bin/grep join
 STAT=$?

@@ -1,6 +1,9 @@
 #!/bin/bash
 
 #Installing Kubernetes and setup network
+LOG=/tmp/kubeinstall.log
+rm -f $LOG
+
 
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
