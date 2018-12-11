@@ -50,3 +50,16 @@ sed -i "s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g" /etc/systemd/system/ku
 systemctl daemon-reload &>/dev/null
 systemctl restart kubelet &>>$LOG
 Stat $? "Retarting Kubelet Service"
+
+kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=NumCPU &>$LOG
+cat $LOG | /bin/grep join
+STAT=$?
+Stat $? "Initializing Kubernetes Cluster"
+
+mkdir -p $HOME/.kube
+rm $HOME/.kube/config
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml &>/dev/null
+Stat $? "Setting Up Flanneld Network"
