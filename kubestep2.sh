@@ -1,9 +1,14 @@
 #!/bin/bash
 
 #Installing Kubernetes and setup network
+
+#Log File
 LOG=/tmp/kubeinstall.log
 rm -f $LOG
 
+## Source Common Functions
+curl -s "https://raw.githubusercontent.com/linuxautomations/scripts/master/common-functions.sh" >/tmp/common-functions.sh
+source /tmp/common-functions.sh
 
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
